@@ -2,16 +2,8 @@
 
 To learn more about us, check out [dourodata.com](https://www.dourodata.com).
 
-## Commands
+## Products
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+- [Cal](products/cal.md)
+- [Time Dimension](products/time_dimension.md)
+- [Country Dimension](products/country_dimension.md)

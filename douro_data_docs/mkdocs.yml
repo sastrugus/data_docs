@@ -3,8 +3,16 @@ site_url: https://docs.dourodata.com
 site_description: The documentation for data products by Douro
 copyright: >
   Copyright &copy; 2024 Douro Data
+# copyright: >
+#   Copyright &copy; 2024 Douro Data –
+#   <a href="#__consent">Change cookie settings</a>
+
 nav:
   - Home: index.md
+  - Products:
+    - Cal: products/cal.md
+    - Time: products/time_dimension.md
+    - Country: products/country_dimension.md
   - About: about.md
 theme:
   name: material
