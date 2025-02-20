@@ -1,5 +1,18 @@
 site_name: Douro Docs
+site_url: https://docs.dourodata.com
+site_description: The documentation for data products by Douro
+copyright: >
+  Copyright &copy; 2024 Douro Data
 nav:
   - Home: index.md
   - About: about.md
-theme: gitbook
+theme:
+  name: material
+  palette:
+    primary: green
+  # logo: assets/douro_logo.png
+  favicon: img/favicon.ico
+markdown_extensions:
+  - toc:
+      permalink: "#"
+      baselevel: 2

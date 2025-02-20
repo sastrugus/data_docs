@@ -21,7 +21,7 @@ jobs:
         run: pip install mkdocs
 
       - name: Install MKDocs Theme
-        run: pip install mkdocs-gitbook
+        run: pip install mkdocs-material
 
       - name: Deploy the docs
         run: mkdocs gh-deploy -f douro_data_docs/mkdocs.yml

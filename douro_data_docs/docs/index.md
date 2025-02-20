@@ -1,6 +1,6 @@
-# Welcome to MkDocs
+# Welcome to Douro Docs!
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+To learn more about us, check out [dourodata.com](https://www.dourodata.com).
 
 ## Commands
 
