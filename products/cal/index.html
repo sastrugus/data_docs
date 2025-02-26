@@ -65,7 +65,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -90,10 +90,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Douro Docs" class="md-header__button md-logo" aria-label="Douro Docs" data-md-component="logo">
+    <a href="https://dourodata.com" title="Douro Docs" class="md-header__button md-logo" aria-label="Douro Docs" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../assets/inverted_logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -185,10 +184,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Douro Docs" class="md-nav__button md-logo" aria-label="Douro Docs" data-md-component="logo">
+    <a href="https://dourodata.com" title="Douro Docs" class="md-nav__button md-logo" aria-label="Douro Docs" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../assets/inverted_logo.png" alt="logo">
 
     </a>
     Douro Docs
@@ -352,9 +350,27 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#usage-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Scenarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#column-definitions" class="md-nav__link">
     <span class="md-ellipsis">
       Column definitions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#further-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further Info
     </span>
   </a>
   
@@ -517,9 +533,27 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#usage-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Scenarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#column-definitions" class="md-nav__link">
     <span class="md-ellipsis">
       Column definitions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#further-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further Info
     </span>
   </a>
   
@@ -563,7 +597,7 @@
 <ul>
 <li><strong>Nonprofit:</strong> A fiscal date dimension that follows the standard for nonprofits</li>
 <li><strong>U.S.A. Government:</strong> A fiscal date dimension that follows the standard of the US Government</li>
-<li><strong>445:</strong> Heavily used in retail, a fiscal calendar designed around managing the 53rd week</li>
+<li><strong>445/454/544:</strong> Heavily used in retail, a fiscal calendar designed around comparable reporting periods. Also handles the 53rd week.</li>
 </ul>
 <p>Although there are slight differences in the setup of each, the general process is outlined below:</p>
 <ol>
@@ -577,8 +611,8 @@
 <p><strong><em>NOTE:</em></strong> The 445 has some extra unique characteristics, so is discussed in further detail in the following section.</p>
 </blockquote>
 <h3 id="the-445-calendar">The 445 Calendar<a class="headerlink" href="#the-445-calendar" title="Permanent link">#</a></h3>
-<p>The 445 calendar is a fiscal calendar that is heavily used in retail. It is designed to manage the 53rd week of the year, which is often a week of extra sales.</p>
-<p>In practice, this means that the fiscal calendar will potentially start earlier than the standard calendar.</p>
+<p>The 445 calendar (along with the siblings 454 and 544) is a fiscal calendar that is heavily used in retail. It is designed to allow for meaningful and consistent reporting periods that can be compared and aggregrated accurately as well as to manage the potential 53rd week of the year, which is often a week of extra sales.</p>
+<p>In practice, this means that the fiscal calendar will often start earlier than the standard Gregorian calendar.</p>
 <p>Using an example, let's say the fiscal year starts on January 1st and the company starts the week on a Saturday. Depending on the year, the fiscal year could start back up to 6 days before the standard calendar year. So for the year 2015, the fiscal year would actually start on Saturday, December 27th!</p>
 <p>To minimize some of the potential confusion around the misalignment of a fiscal and gregorian calendar, we push the actual start date of your calendar dimension to the first year where both calendars align. In our example case, that would mean going back to 2011.</p>
 <h3 id="using-cal">Using Cal<a class="headerlink" href="#using-cal" title="Permanent link">#</a></h3>
@@ -603,7 +637,16 @@ on your_data.date_field = douro_data.douro_cal_dimension.sql_date
 and douro_data.douro_cal_dimension.fiscal_ly_qtd = true
 </code></pre>
 <h3 id="daily-updates">Daily Updates<a class="headerlink" href="#daily-updates" title="Permanent link">#</a></h3>
-<p>Cal is designed to be updated daily. This means that you can expect your calendar dimension to be fully up to date at the start of each day.</p>
+<p>Cal is designed to be updated daily and ships with the ability to do so without any intervention. This means that you can expect your calendar dimension to be fully up to date at the start of each day.</p>
+<h3 id="usage-scenarios">Usage Scenarios<a class="headerlink" href="#usage-scenarios" title="Permanent link">#</a></h3>
+<p>The calendar dimension table can be used in various ways to support time-based analyses and reporting:</p>
+<ol>
+<li><strong>Filtering and Grouping</strong>: Use the date-related fields (e.g., <code>DATE_KEY</code>, <code>SQL_DATE</code>, <code>CAL_YEAR_NUM</code>, <code>CAL_QUARTER_NUM</code>, <code>CAL_MONTH_NUM</code>) to filter and group data based on time periods.</li>
+<li><strong>Trend Analysis</strong>: Analyze trends over time using the date-related fields and the associated metrics (e.g., sales, revenue, costs).</li>
+<li><strong>Seasonality Analysis</strong>: Identify seasonal patterns by examining the data at different granularities (e.g., day, week, month, quarter, year).</li>
+<li><strong>Holiday and Weekend Analysis</strong>: Analyze the impact of holidays and weekends on various business metrics using the <code>WEEKEND</code> and <code>HOLIDAY</code> flags.</li>
+<li><strong>Fiscal Calendar Support</strong>: The table includes fiscal calendar-related fields (e.g., <code>FISCAL_YEAR_NUMBER</code>, <code>FISCAL_QUARTER_NUMBER</code>, <code>FISCAL_MONTH_NUMBER</code>) to support reporting and analysis based on a fiscal calendar.</li>
+</ol>
 <h3 id="column-definitions">Column definitions<a class="headerlink" href="#column-definitions" title="Permanent link">#</a></h3>
 <table>
 <thead>
@@ -614,6 +657,201 @@ and douro_data.douro_cal_dimension.fiscal_ly_qtd = true
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>DATE_KEY</td>
+<td>Date Key</td>
+<td>A unique identifier for each date, typically an integer value representing the date in YYYYMMDD format.</td>
+</tr>
+<tr>
+<td>SQL_DATE</td>
+<td>SQL Date</td>
+<td>The date in the standard SQL date format (YYYY-MM-DD).</td>
+</tr>
+<tr>
+<td>DATE_NAME</td>
+<td>Date Name</td>
+<td>The date in the MM/DD/YYYY format.</td>
+</tr>
+<tr>
+<td>SORT_DATE</td>
+<td>Sort Date</td>
+<td>The date in the YYYY/MM/DD format, designed for sorting and ordering purposes.</td>
+</tr>
+<tr>
+<td>CAL_DAY_NUM</td>
+<td>Cal Day Number</td>
+<td>The sequential day number, starting from 1 on January 1st of the earliest year in the data.</td>
+</tr>
+<tr>
+<td>CAL_MONTH_NUM</td>
+<td>Cal Month Number</td>
+<td>The sequential month number, starting from 1 for January.</td>
+</tr>
+<tr>
+<td>CAL_QUARTER_NUM</td>
+<td>Cal Quarter Number</td>
+<td>The sequential quarter number, starting from 1 for the first quarter.</td>
+</tr>
+<tr>
+<td>CAL_YEAR_NUM</td>
+<td>Cal Year Number</td>
+<td>The year number.</td>
+</tr>
+<tr>
+<td>DAY_OF_WEEK_NUMBER</td>
+<td>Day of Week Number</td>
+<td>The day of the week number, where 1 represents Sunday and 7 represents Saturday.</td>
+</tr>
+<tr>
+<td>DAY_OF_WEEK_NAME</td>
+<td>Day of Week Name</td>
+<td>The name of the day of the week.</td>
+</tr>
+<tr>
+<td>DAY_OF_MONTH_NUMBER</td>
+<td>Day of Month Number</td>
+<td>The day of the month number, ranging from 1 to 31.</td>
+</tr>
+<tr>
+<td>DAY_OF_MONTH_NAME</td>
+<td>Day of Month Name</td>
+<td>The name of the day of the month.</td>
+</tr>
+<tr>
+<td>DAY_OF_YEAR_NUMBER</td>
+<td>Day of Year Number</td>
+<td>The sequential day of the year number, starting from 1 on January 1st.</td>
+</tr>
+<tr>
+<td>DAY_OF_YEAR_NAME</td>
+<td>Day of Year Name</td>
+<td>The name of the day of the year.</td>
+</tr>
+<tr>
+<td>DAY_NAME</td>
+<td>Day Name</td>
+<td>The full name of the day of the week.</td>
+</tr>
+<tr>
+<td>DAY_SHORT_NAME</td>
+<td>Day Short Name</td>
+<td>The abbreviated name of the day of the week.</td>
+</tr>
+<tr>
+<td>WEEKEND</td>
+<td>Weekend</td>
+<td>A boolean flag indicating whether the day is a weekend (true) or a weekday (false).</td>
+</tr>
+<tr>
+<td>HOLIDAY</td>
+<td>Holiday</td>
+<td>A boolean flag indicating whether the day is a holiday (true) or not (false).</td>
+</tr>
+<tr>
+<td>HOLIDAY_NAME</td>
+<td>Holiday Name</td>
+<td>The name of the holiday, if the day is a holiday.</td>
+</tr>
+<tr>
+<td>WEEK_OF_MONTH_NUMBER</td>
+<td>Week of Month Number</td>
+<td>The week of the month number, ranging from 1 to 5.</td>
+</tr>
+<tr>
+<td>WEEK_OF_MONTH_NAME</td>
+<td>Week of Month Name</td>
+<td>The name of the week of the month.</td>
+</tr>
+<tr>
+<td>WEEK_OF_YEAR_NUMBER</td>
+<td>Week of Year Number</td>
+<td>The week of the year number, ranging from 1 to 52 or 53.</td>
+</tr>
+<tr>
+<td>WEEK_OF_YEAR_NAME</td>
+<td>Week of Year Name</td>
+<td>The name of the week of the year.</td>
+</tr>
+<tr>
+<td>WEEK_START_DATE</td>
+<td>Week Start Date</td>
+<td>The start date of the week.</td>
+</tr>
+<tr>
+<td>WEEK_END_DATE</td>
+<td>Week End Date</td>
+<td>The end date of the week.</td>
+</tr>
+<tr>
+<td>MONTH_OF_YEAR_NUMBER</td>
+<td>Month of Year Number</td>
+<td>The month of the year number, ranging from 1 to 12.</td>
+</tr>
+<tr>
+<td>MONTH_OF_YEAR_NAME</td>
+<td>Month of Year Name</td>
+<td>The name of the month of the year.</td>
+</tr>
+<tr>
+<td>MONTH_NAME</td>
+<td>Month Name</td>
+<td>The full name of the month.</td>
+</tr>
+<tr>
+<td>MONTH_SHORT_NAME</td>
+<td>Month Short Name</td>
+<td>The abbreviated name of the month.</td>
+</tr>
+<tr>
+<td>MONTH_START_DATE</td>
+<td>Month Start Date</td>
+<td>The start date of the month.</td>
+</tr>
+<tr>
+<td>MONTH_END_DATE</td>
+<td>Month End Date</td>
+<td>The end date of the month.</td>
+</tr>
+<tr>
+<td>QUARTER_OF_YEAR_NUMBER</td>
+<td>Quarter of Year Number</td>
+<td>The quarter of the year number, ranging from 1 to 4.</td>
+</tr>
+<tr>
+<td>QUARTER_OF_YEAR_NAME</td>
+<td>Quarter of Year Name</td>
+<td>The name of the quarter of the year.</td>
+</tr>
+<tr>
+<td>QUARTER_START_DATE</td>
+<td>Quarter Start Date</td>
+<td>The start date of the quarter.</td>
+</tr>
+<tr>
+<td>QUARTER_END_DATE</td>
+<td>Quarter End Date</td>
+<td>The end date of the quarter.</td>
+</tr>
+<tr>
+<td>YEAR_NUMBER</td>
+<td>Year Number</td>
+<td>The year number.</td>
+</tr>
+<tr>
+<td>YEAR_NAME</td>
+<td>Year Name</td>
+<td>The name of the year.</td>
+</tr>
+<tr>
+<td>YEAR_START_DATE</td>
+<td>Year Start Date</td>
+<td>The start date of the year.</td>
+</tr>
+<tr>
+<td>YEAR_END_DATE</td>
+<td>Year End Date</td>
+<td>The end date of the year.</td>
+</tr>
 <tr>
 <td><code>WTD</code></td>
 <td>Week to Date</td>
@@ -1016,6 +1254,9 @@ and douro_data.douro_cal_dimension.fiscal_ly_qtd = true
 </tr>
 </tbody>
 </table>
+<h3 id="further-info">Further Info<a class="headerlink" href="#further-info" title="Permanent link">#</a></h3>
+<p>By using the calendar dimension table, you can easily perform sophisticated time-based analyses and create consistent, reliable reports across your data warehouse.</p>
+<p>Please reach out to us with any questions or suggestions at <a href="mailto:support@dourodata.com">support@dourodata.com</a> or use the <a href="https://www.dourodata.com/support">support form</a>!</p>
 
 
 
