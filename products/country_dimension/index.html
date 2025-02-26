@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#more-to-follow-soon" class="md-skip">
+        <a href="#country-dimension" class="md-skip">
           Skip to content
         </a>
       
@@ -350,11 +350,53 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#more-to-follow-soon" class="md-nav__link">
+  <a href="#country-dimension" class="md-nav__link">
     <span class="md-ellipsis">
-      More to follow soon...
+      Country Dimension
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Country Dimension">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#column-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Column Definitions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Examples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-update-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data update policy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#further-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further Info
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -420,11 +462,53 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#more-to-follow-soon" class="md-nav__link">
+  <a href="#country-dimension" class="md-nav__link">
     <span class="md-ellipsis">
-      More to follow soon...
+      Country Dimension
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Country Dimension">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#column-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Column Definitions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Examples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-update-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data update policy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#further-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further Info
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -446,7 +530,95 @@
 
   <h1>Country</h1>
 
-<h3 id="more-to-follow-soon">More to follow soon...<a class="headerlink" href="#more-to-follow-soon" title="Permanent link">#</a></h3>
+<h3 id="country-dimension">Country Dimension<a class="headerlink" href="#country-dimension" title="Permanent link">#</a></h3>
+<p><strong>Your comprehensive geographic reference</strong></p>
+<p>Enhance your analytical capabilities with the country dimension table that leverages ISO 3166 standards. This dimension provides a robust, standardized framework for geographic data analysis, enabling precise reporting, seamless data integration, and simplified compliance across global business operations. Key benefits include consistent country representation, improved data quality, and the ability to generate granular insights by efficiently segmenting and analyzing data at the country level.</p>
+<ul>
+<li>Ideal for organizations seeking to:</li>
+<li>Standardize geographic data across systems</li>
+<li>Support detailed regional analytics</li>
+<li>Ensure global data compatibility</li>
+<li>Facilitate targeted strategic decision-making</li>
+</ul>
+<p>Includes comprehensive ISO country code mappings, allowing for accurate and scalable international data management.</p>
+<h4 id="column-definitions">Column Definitions<a class="headerlink" href="#column-definitions" title="Permanent link">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Column Identifier</th>
+<th>Definition</th>
+<th>Sample Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>The generally used name for a country</td>
+<td>United States</td>
+</tr>
+<tr>
+<td>alpha_2</td>
+<td>The two letter code used to identify a country</td>
+<td>US</td>
+</tr>
+<tr>
+<td>alpha_3</td>
+<td>The three letter code used to identify a country</td>
+<td>USA</td>
+</tr>
+<tr>
+<td>common_name</td>
+<td>If applicable, a separate name used for the country. Filled with the name if not applicable.</td>
+<td>United States</td>
+</tr>
+<tr>
+<td>official_name</td>
+<td>If applicable, the official name used for the country. Filled with the name if not applicable.</td>
+<td>United States of America</td>
+</tr>
+<tr>
+<td>numeric_code</td>
+<td>Similar to alpha_3, a three digit code used to identify countries</td>
+<td>840</td>
+</tr>
+<tr>
+<td>flag</td>
+<td>the UTF-8 (Unicode) emoji flag of the identified country.</td>
+<td>🇺🇸</td>
+</tr>
+</tbody>
+</table>
+<h4 id="usage-examples">Usage Examples<a class="headerlink" href="#usage-examples" title="Permanent link">#</a></h4>
+<p><strong>Example to pull from the dimension table</strong></p>
+<pre><code class="language-sql">select
+country.name,
+count(transaction.id) as transaction_counts
+from your_transaction_table as transaction
+inner join douro_data.country_dimension as country
+on transaction.country_id = country.country_id
+group by
+country.name
+</code></pre>
+<p><strong>Example to insert into fact with fallback Kimball row</strong></p>
+<pre><code class="language-sql">select
+source.id,
+source.transaction_amount,
+source.transaction_created,
+coalesce(country.country_id, -1) as country_id
+...
+from source_table as source
+left outer join douro_data.country_dimension as country
+on source.alpha_2_country_code = country.alpha_2
+</code></pre>
+<h4 id="data-update-policy">Data update policy<a class="headerlink" href="#data-update-policy" title="Permanent link">#</a></h4>
+<p>This is an important note copied over from the pycountry repository, which feeds the data for this dimension.</p>
+<blockquote>
+<p><strong><em>NOTE:</em></strong> No changes to the data will be accepted into pycountry. This is a pure wrapper around the ISO standard using the <code>pkg-isocodes</code> database from Debian as is.
+If you need changes to the political situation in the world, please talk to the ISO or Debian people, not me.</p>
+</blockquote>
+<h4 id="further-info">Further Info<a class="headerlink" href="#further-info" title="Permanent link">#</a></h4>
+<p>By using the country dimension table, you can easily perform more sophisticated region-based analyses and create consistent, reliable reports across your data warehouse.</p>
+<p>Please reach out to us with any questions or suggestions at <a href="mailto:support@dourodata.com">support@dourodata.com</a> or use the <a href="https://www.dourodata.com/support">support form</a>!</p>
 
 
 
