@@ -1,4 +1,4 @@
-## Country Dimension
+## Country Dimension Overview
 
 **Your comprehensive geographic reference**
 
@@ -12,7 +12,7 @@ Enhance your analytical capabilities with the country dimension table that lever
 
 Includes comprehensive ISO country code mappings, allowing for accurate and scalable international data management.
 
-### Column Definitions
+## Column Definitions
 
 | Column Identifier | Definition                                                                                     | Sample Value             |
 | ----------------- | ---------------------------------------------------------------------------------------------- | ------------------------ |
@@ -24,7 +24,7 @@ Includes comprehensive ISO country code mappings, allowing for accurate and scal
 | numeric_code      | Similar to alpha_3, a three digit code used to identify countries                              | 840                      |
 | flag              | the UTF-8 (Unicode) emoji flag of the identified country.                                      | 🇺🇸                       |
 
-### Usage Examples
+## Usage Examples
 
 **Example to pull from the dimension table**
 
@@ -53,14 +53,14 @@ left outer join douro_data.country_dimension as country
 on source.alpha_2_country_code = country.alpha_2
 ```
 
-### Data update policy
+## Data update policy
 
 This is an important note copied over from the pycountry repository, which feeds the data for this dimension.
 
 > **_NOTE:_** No changes to the data will be accepted into pycountry. This is a pure wrapper around the ISO standard using the `pkg-isocodes` database from Debian as is.
 > If you need changes to the political situation in the world, please talk to the ISO or Debian people, not me.
 
-### Further Info
+## Further Info
 
 By using the country dimension table, you can easily perform more sophisticated region-based analyses and create consistent, reliable reports across your data warehouse.
 
