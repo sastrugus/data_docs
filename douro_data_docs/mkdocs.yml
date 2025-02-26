@@ -18,9 +18,11 @@ theme:
   name: material
   palette:
     primary: green
-  # logo: assets/douro_logo.png
+  logo: assets/inverted_logo.png
   favicon: img/favicon.ico
 markdown_extensions:
   - toc:
       permalink: "#"
       baselevel: 2
+extra:
+  homepage: https://dourodata.com
