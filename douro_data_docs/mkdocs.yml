@@ -17,7 +17,7 @@ nav:
 theme:
   name: material
   palette:
-    primary: green
+    primary: black
   logo: assets/inverted_logo.png
   favicon: img/favicon.ico
 markdown_extensions:
