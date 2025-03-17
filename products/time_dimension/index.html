@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#more-to-follow-soon" class="md-skip">
+        <a href="#time-dimension" class="md-skip">
           Skip to content
         </a>
       
@@ -326,11 +326,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#more-to-follow-soon" class="md-nav__link">
+  <a href="#time-dimension" class="md-nav__link">
     <span class="md-ellipsis">
-      More to follow soon...
+      Time Dimension
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Time Dimension">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-table-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Table Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#further-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -418,11 +451,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#more-to-follow-soon" class="md-nav__link">
+  <a href="#time-dimension" class="md-nav__link">
     <span class="md-ellipsis">
-      More to follow soon...
+      Time Dimension
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Time Dimension">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-table-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Table Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#further-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further Details
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -444,7 +510,26 @@
 
   <h1>Time</h1>
 
-<h3 id="more-to-follow-soon">More to follow soon...<a class="headerlink" href="#more-to-follow-soon" title="Permanent link">#</a></h3>
+<h3 id="time-dimension">Time Dimension<a class="headerlink" href="#time-dimension" title="Permanent link">#</a></h3>
+<p>This guide should take you from zero to 60 in no time at all.</p>
+<p><img alt="TimeDimSetup" src="../../assets/time_dim_preview.png" /></p>
+<h4 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h4>
+<p>The Time Dimension by Douro has an extremely straight forward installation process, just install the app and the Streamlit UI will guide the setup process with little to no interaction from you.</p>
+<p>Once complete, a sample of data should be visible.</p>
+<h4 id="example-table-usage">Example Table Usage<a class="headerlink" href="#example-table-usage" title="Permanent link">#</a></h4>
+<p>Using a time dimension starts as simple as any normal join!</p>
+<p>Using the time value, join on <code>MINUTE_SQL</code> and unlock the value from every other column. The example below uses a timestamp as the starting point:</p>
+<pre><code class="language-sql">select
+time_dim.*
+from (
+    select date_trunc('minute', cast(current_timestamp() as time))  as test_time
+) sample_time
+inner join DOURO_TIME_DIMENSION.douro_data.time_dimension time_dim
+on sample_time.test_time = time_dim.minute_sql;
+</code></pre>
+<h4 id="further-details">Further Details<a class="headerlink" href="#further-details" title="Permanent link">#</a></h4>
+<p>The separate intervals and ISO standard times are available for you once joined to help group and aggregate data as required.</p>
+<p>Please don't hesitate to drop any suggestions or ideas on <a href="https://www.dourodata.com/support">our support page</a>! Alternatively, you can always contact us at <a href="mailto:support@dourodata.com?subject=Time%20Dimension%20Support">support@dourodata.com</a>.</p>
 
 
 
@@ -499,7 +584,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>
