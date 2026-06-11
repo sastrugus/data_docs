@@ -1,0 +1,1147 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="The documentation for data products by Douro">
+      
+      
+      
+        <link rel="canonical" href="https://docs.dourodata.com/healthcare-pricing/example-queries/">
+      
+      
+        <link rel="prev" href="../negotiated-rates/">
+      
+      
+        <link rel="next" href="../data-quality/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Example Queries - Douro Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#example-queries" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://dourodata.com" title="Douro Docs" class="md-header__button md-logo" aria-label="Douro Docs" data-md-component="logo">
+      
+  <img src="../../assets/inverted_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Douro Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Example Queries
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://dourodata.com" title="Douro Docs" class="md-nav__button md-logo" aria-label="Douro Docs" data-md-component="logo">
+      
+  <img src="../../assets/inverted_logo.png" alt="logo">
+
+    </a>
+    Douro Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Products
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Products
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../products/cal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../products/time_dimension/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Time
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../products/country_dimension/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Country
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Healthcare Pricing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Healthcare Pricing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hospital-directory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hospital Directory (Free)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../negotiated-rates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Negotiated Rates (Paid Trial)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example Queries
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example Queries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#example-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Queries
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-single-hospital-lookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Single-hospital lookup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-payer-lens-on-one-hospital" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Payer lens on one hospital
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cross-hospital-payer-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Cross-hospital payer comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-price-position-within-the-market" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Price position within the market
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-methodology-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Methodology breakdown
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-cash-vs-negotiated-spread" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Cash-vs-negotiated spread
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-compliance-posture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Compliance posture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-data-freshness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Data freshness
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-quality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Quality Methodology
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../known-limitations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Known Limitations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ & Query Conventions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#example-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Queries
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-single-hospital-lookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Single-hospital lookup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-payer-lens-on-one-hospital" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Payer lens on one hospital
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cross-hospital-payer-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Cross-hospital payer comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-price-position-within-the-market" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Price position within the market
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-methodology-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Methodology breakdown
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-cash-vs-negotiated-spread" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Cash-vs-negotiated spread
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-compliance-posture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Compliance posture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-data-freshness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Data freshness
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Example Queries</h1>
+
+<h2 id="example-queries">Example Queries<a class="headerlink" href="#example-queries" title="Permanent link">#</a></h2>
+<p>Eight worked examples against the paid trial, smoke-tested live on 2026-06-11 (8/8 pass). They use a four-hospital demo peer set — Mount Sinai (330024), Bellevue (330204), NewYork-Presbyterian/Queens (330055), White Plains (330304) — with Bellevue as the cash-comparison anchor. Replace <code>MELANGE.MARKETPLACE.</code> with your mounted database name.</p>
+<p>Two conventions you'll see throughout: <code>SETTING</code> is compared through <code>LOWER()</code> as a casing guard, and the strict-benchmarking filter <code>AND AUDIT_FLAG IS NULL</code> appears commented where it applies — uncomment it for per-code work, or use <code>AUDIT_FLAG IS DISTINCT FROM 'CONSTANT_VALUE_FILL'</code> to exclude fills only. See <a href="../data-quality/">Data Quality Methodology</a> for when to use which.</p>
+<h3 id="1-single-hospital-lookup">1. Single-hospital lookup<a class="headerlink" href="#1-single-hospital-lookup" title="Permanent link">#</a></h3>
+<p>Everything we hold for one hospital, with standard charges joined alongside:</p>
+<pre><code class="language-sql">SELECT
+    n.CMS_CCN, n.HOSPITAL_NAME, n.CODE_TYPE, n.CODE, n.DESCRIPTION, n.SETTING,
+    n.PAYER_NAME, n.PAYER_CANONICAL, n.PAYER_LINE_OF_BUSINESS, n.PLAN_NAME,
+    n.NEGOTIATED_RATE, n.NEGOTIATED_TYPE, n.RATE_TYPE,
+    s.GROSS_CHARGE, s.DISCOUNTED_CASH
+FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES n
+LEFT JOIN MELANGE.MARKETPLACE.STANDARD_CHARGES s
+       ON  s.CMS_CCN        = n.CMS_CCN
+       AND s.CODE           = n.CODE
+       AND s.CODE_TYPE      = n.CODE_TYPE
+       AND LOWER(s.SETTING) = LOWER(n.SETTING)
+WHERE n.STATE_CODE = 'NY'
+  AND n.CMS_CCN = '330024'
+ORDER BY n.CODE_TYPE, n.CODE, n.PAYER_NAME;
+</code></pre>
+<h3 id="2-payer-lens-on-one-hospital">2. Payer lens on one hospital<a class="headerlink" href="#2-payer-lens-on-one-hospital" title="Permanent link">#</a></h3>
+<p>One hospital, one canonical payer, one line of business — commercial Aetna at Mount Sinai, dollar rates only:</p>
+<pre><code class="language-sql">SELECT
+    HOSPITAL_NAME, CODE_TYPE, CODE, DESCRIPTION, SETTING,
+    PAYER_NAME, PAYER_CANONICAL, PAYER_LINE_OF_BUSINESS, PLAN_NAME,
+    NEGOTIATED_RATE, NEGOTIATED_TYPE, RATE_TYPE
+FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES
+WHERE STATE_CODE = 'NY'
+  AND CMS_CCN = '330024'
+  AND PAYER_CANONICAL = 'AETNA'
+  AND PAYER_LINE_OF_BUSINESS = 'commercial'
+  AND RATE_TYPE = 'negotiated_dollar'
+  AND CODE_TYPE IN ('CPT','HCPCS','MS-DRG','APR-DRG','APC','NDC')
+ORDER BY CODE_TYPE, CODE, PLAN_NAME;
+</code></pre>
+<h3 id="3-cross-hospital-payer-comparison">3. Cross-hospital payer comparison<a class="headerlink" href="#3-cross-hospital-payer-comparison" title="Permanent link">#</a></h3>
+<p>The flagship: what one payer pays each hospital in the peer set for the same codes, same setting:</p>
+<pre><code class="language-sql">SELECT
+    r.CODE_TYPE, r.CODE, r.DESCRIPTION, r.SETTING, r.HOSPITAL_NAME,
+    r.PAYER_NAME, r.PLAN_NAME, r.NEGOTIATED_RATE, r.NEGOTIATED_TYPE, r.RATE_TYPE
+FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES r
+WHERE r.STATE_CODE = 'NY'
+  AND r.CMS_CCN IN ('330024','330204','330055','330304')
+  AND r.PAYER_CANONICAL = 'AETNA'
+  AND r.PAYER_LINE_OF_BUSINESS = 'commercial'
+  AND r.RATE_TYPE = 'negotiated_dollar'
+  AND r.NEGOTIATED_RATE &gt; 0
+  AND r.NEGOTIATED_TYPE IS NOT NULL
+  AND r.CODE_TYPE IN ('CPT','HCPCS','MS-DRG','APR-DRG','APC')
+  AND r.CODE IN ('27447','29881','45378','70553','99285')
+  -- AND r.AUDIT_FLAG IS NULL  -- strict per-code benchmarking recipe
+ORDER BY r.CODE, LOWER(r.SETTING), r.NEGOTIATED_RATE DESC;
+</code></pre>
+<h3 id="4-price-position-within-the-market">4. Price position within the market<a class="headerlink" href="#4-price-position-within-the-market" title="Permanent link">#</a></h3>
+<p>The other flagship: where one hospital's rate sits against the market's 10th / 50th / 90th percentile, per code and setting:</p>
+<pre><code class="language-sql">WITH aetna_dollars AS (
+    SELECT CMS_CCN, HOSPITAL_NAME, CODE_TYPE, CODE, DESCRIPTION, SETTING,
+           LOWER(SETTING) AS SETTING_KEY, NEGOTIATED_RATE
+    FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES
+    WHERE STATE_CODE = 'NY'
+      AND RATE_TYPE = 'negotiated_dollar' AND NEGOTIATED_RATE &gt; 0
+      AND PAYER_CANONICAL = 'AETNA' AND PAYER_LINE_OF_BUSINESS = 'commercial'
+      AND CODE_TYPE IN ('CPT','HCPCS','MS-DRG','APR-DRG','APC')
+      AND CODE IN ('27447','29881','45378','70553','99285')
+      -- AND AUDIT_FLAG IS NULL  -- strict per-code benchmarking recipe
+),
+market AS (
+    SELECT CODE_TYPE, CODE, SETTING_KEY,
+           PERCENTILE_CONT(0.10) WITHIN GROUP (ORDER BY NEGOTIATED_RATE) AS p10,
+           PERCENTILE_CONT(0.50) WITHIN GROUP (ORDER BY NEGOTIATED_RATE) AS median,
+           PERCENTILE_CONT(0.90) WITHIN GROUP (ORDER BY NEGOTIATED_RATE) AS p90,
+           COUNT(DISTINCT CMS_CCN) AS n_hospitals
+    FROM aetna_dollars GROUP BY CODE_TYPE, CODE, SETTING_KEY
+)
+SELECT a.HOSPITAL_NAME, a.CODE_TYPE, a.CODE, a.DESCRIPTION, a.SETTING,
+       a.NEGOTIATED_RATE AS my_rate, m.p10, m.median, m.p90, m.n_hospitals,
+       CASE WHEN a.NEGOTIATED_RATE &lt;= m.p10 THEN 'at/below 10th pct'
+            WHEN a.NEGOTIATED_RATE &lt;  m.median THEN 'below median'
+            WHEN a.NEGOTIATED_RATE &lt;  m.p90 THEN 'above median'
+            ELSE 'at/above 90th pct' END AS position
+FROM aetna_dollars a
+JOIN market m ON m.CODE_TYPE=a.CODE_TYPE AND m.CODE=a.CODE AND m.SETTING_KEY=a.SETTING_KEY
+WHERE a.CMS_CCN = '330024'
+ORDER BY a.CODE, LOWER(a.SETTING);
+</code></pre>
+<h3 id="5-methodology-breakdown">5. Methodology breakdown<a class="headerlink" href="#5-methodology-breakdown" title="Permanent link">#</a></h3>
+<p>What contract methodologies each hospital publishes, by setting — run this before averaging anything (see <a href="../faq/">FAQ</a> on why mixing methodologies is wrong):</p>
+<pre><code class="language-sql">SELECT
+    HOSPITAL_NAME, LOWER(SETTING) AS setting, NEGOTIATED_TYPE, RATE_TYPE,
+    COUNT(*) AS row_count, COUNT(DISTINCT CODE) AS distinct_codes,
+    COUNT(DISTINCT PAYER_CANONICAL) AS distinct_canonical_payers,
+    COUNT(DISTINCT PAYER_NAME) AS distinct_payer_strings
+FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES
+WHERE STATE_CODE = 'NY'
+  AND CMS_CCN IN ('330024','330204','330055','330304')
+GROUP BY HOSPITAL_NAME, LOWER(SETTING), NEGOTIATED_TYPE, RATE_TYPE
+ORDER BY HOSPITAL_NAME, setting, row_count DESC;
+</code></pre>
+<h3 id="6-cash-vs-negotiated-spread">6. Cash-vs-negotiated spread<a class="headerlink" href="#6-cash-vs-negotiated-spread" title="Permanent link">#</a></h3>
+<p>How far each negotiated rate sits above (or below) the hospital's own discounted cash price:</p>
+<pre><code class="language-sql">SELECT
+    n.HOSPITAL_NAME, n.CODE_TYPE, n.CODE, n.DESCRIPTION, n.SETTING,
+    s.DISCOUNTED_CASH, n.NEGOTIATED_RATE,
+    (n.NEGOTIATED_RATE - s.DISCOUNTED_CASH) AS negotiated_minus_cash,
+    ROUND((n.NEGOTIATED_RATE - s.DISCOUNTED_CASH)/NULLIF(s.DISCOUNTED_CASH,0)*100,1) AS pct_over_cash
+FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES n
+JOIN MELANGE.MARKETPLACE.STANDARD_CHARGES s
+       ON  s.CMS_CCN        = n.CMS_CCN
+       AND s.CODE           = n.CODE
+       AND s.CODE_TYPE      = n.CODE_TYPE
+       AND LOWER(s.SETTING) = LOWER(n.SETTING)
+WHERE n.STATE_CODE = 'NY'
+  AND n.CMS_CCN IN ('330024','330204','330055','330304')
+  AND n.RATE_TYPE = 'negotiated_dollar' AND n.NEGOTIATED_RATE &gt; 0
+  AND s.DISCOUNTED_CASH IS NOT NULL
+  AND n.PAYER_CANONICAL = 'AETNA' AND n.PAYER_LINE_OF_BUSINESS = 'commercial'
+  AND n.CODE IN ('27447','29881','45378','70553','99285')
+ORDER BY pct_over_cash DESC;
+</code></pre>
+<h3 id="7-compliance-posture">7. Compliance posture<a class="headerlink" href="#7-compliance-posture" title="Permanent link">#</a></h3>
+<p>Row-level CMS-transparency findings for the peer set, worst first. No rows does not mean certified clean — <code>HAS_COMPLIANCE_CHECK = FALSE</code> is the explicit "not yet examined" flag:</p>
+<pre><code class="language-sql">SELECT
+    CMS_CCN, HOSPITAL_NAME, CMS_TYPE, VIOLATION_CODE, SEVERITY, FIELD_PATH,
+    DESCRIPTION, CMS_REGULATION_SECTION, RESOLUTION_STATUS,
+    COMPLIANCE_SCORE, IS_COMPLIANT, CHECKED_AT
+FROM MELANGE.MARKETPLACE.COMPLIANCE_VIOLATIONS
+WHERE STATE_CODE = 'NY'
+  AND CMS_CCN IN ('330024','330204','330055','330304')
+ORDER BY
+    CASE SEVERITY WHEN 'critical' THEN 0 WHEN 'high' THEN 1 ELSE 2 END,
+    COMPLIANCE_SCORE ASC, CMS_CCN;
+</code></pre>
+<h3 id="8-data-freshness">8. Data freshness<a class="headerlink" href="#8-data-freshness" title="Permanent link">#</a></h3>
+<p>How recently we loaded each hospital's file. <code>LATEST_INGEST_DATE</code> is Melange's load date, not the hospital's self-reported republish date:</p>
+<pre><code class="language-sql">SELECT
+    CMS_CCN, HOSPITAL_NAME, SYSTEM_NAME, SYSTEM_ROLE, CITY, STATE_CODE,
+    CMS_TYPE, CMS_OWNERSHIP, CMS_RATING, LATEST_INGEST_DATE,
+    DATEDIFF('day', LATEST_INGEST_DATE, CURRENT_DATE) AS days_since_ingest,
+    AVG_COMPLIANCE_SCORE, IS_FULLY_COMPLIANT
+FROM MELANGE.MARKETPLACE.HOSPITAL_DIRECTORY
+WHERE STATE_CODE = 'NY'
+  AND CMS_CCN IN ('330024','330204','330055','330304')
+ORDER BY LATEST_INGEST_DATE DESC;
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Douro Data
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

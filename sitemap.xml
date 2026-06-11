@@ -2,22 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.dourodata.com/</loc>
-         <lastmod>2025-03-17</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://docs.dourodata.com/about/</loc>
-         <lastmod>2025-03-17</lastmod>
+         <lastmod>2026-06-11</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.dourodata.com/healthcare-pricing/</loc>
+         <lastmod>2026-06-11</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.dourodata.com/healthcare-pricing/data-quality/</loc>
+         <lastmod>2026-06-11</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.dourodata.com/healthcare-pricing/example-queries/</loc>
+         <lastmod>2026-06-11</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.dourodata.com/healthcare-pricing/faq/</loc>
+         <lastmod>2026-06-11</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.dourodata.com/healthcare-pricing/hospital-directory/</loc>
+         <lastmod>2026-06-11</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.dourodata.com/healthcare-pricing/known-limitations/</loc>
+         <lastmod>2026-06-11</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.dourodata.com/healthcare-pricing/negotiated-rates/</loc>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://docs.dourodata.com/products/cal/</loc>
-         <lastmod>2025-03-17</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://docs.dourodata.com/products/country_dimension/</loc>
-         <lastmod>2025-03-17</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
     <url>
          <loc>https://docs.dourodata.com/products/time_dimension/</loc>
-         <lastmod>2025-03-17</lastmod>
+         <lastmod>2026-06-11</lastmod>
     </url>
 </urlset>
