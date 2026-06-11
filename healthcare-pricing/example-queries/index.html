@@ -940,7 +940,7 @@
   <h1>Example Queries</h1>
 
 <h2 id="example-queries">Example Queries<a class="headerlink" href="#example-queries" title="Permanent link">#</a></h2>
-<p>Eight worked examples against the paid trial, smoke-tested live on 2026-06-11 (8/8 pass). They use a four-hospital demo peer set — Mount Sinai (330024), Bellevue (330204), NewYork-Presbyterian/Queens (330055), White Plains (330304) — with Bellevue as the cash-comparison anchor. Replace <code>MELANGE.MARKETPLACE.</code> with your mounted database name.</p>
+<p>Eight worked examples against the paid trial, smoke-tested live on 2026-06-11 (8/8 pass). They use a four-hospital demo peer set — Mount Sinai (330024), Bellevue (330204), NewYork-Presbyterian/Queens (330055), White Plains (330304) — with Bellevue as the cash-comparison anchor. The SQL below uses <code>YOUR_DB</code> as the database name. Replace YOUR_DB with the database name you chose when mounting the share.</p>
 <p>Two conventions you'll see throughout: <code>SETTING</code> is compared through <code>LOWER()</code> as a casing guard, and the strict-benchmarking filter <code>AND AUDIT_FLAG IS NULL</code> appears commented where it applies — uncomment it for per-code work, or use <code>AUDIT_FLAG IS DISTINCT FROM 'CONSTANT_VALUE_FILL'</code> to exclude fills only. See <a href="../data-quality/">Data Quality Methodology</a> for when to use which.</p>
 <h3 id="1-single-hospital-lookup">1. Single-hospital lookup<a class="headerlink" href="#1-single-hospital-lookup" title="Permanent link">#</a></h3>
 <p>Everything we hold for one hospital, with standard charges joined alongside:</p>
@@ -949,8 +949,8 @@
     n.PAYER_NAME, n.PAYER_CANONICAL, n.PAYER_LINE_OF_BUSINESS, n.PLAN_NAME,
     n.NEGOTIATED_RATE, n.NEGOTIATED_TYPE, n.RATE_TYPE,
     s.GROSS_CHARGE, s.DISCOUNTED_CASH
-FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES n
-LEFT JOIN MELANGE.MARKETPLACE.STANDARD_CHARGES s
+FROM YOUR_DB.MARKETPLACE.NEGOTIATED_RATES n
+LEFT JOIN YOUR_DB.MARKETPLACE.STANDARD_CHARGES s
        ON  s.CMS_CCN        = n.CMS_CCN
        AND s.CODE           = n.CODE
        AND s.CODE_TYPE      = n.CODE_TYPE
@@ -965,7 +965,7 @@ ORDER BY n.CODE_TYPE, n.CODE, n.PAYER_NAME;
     HOSPITAL_NAME, CODE_TYPE, CODE, DESCRIPTION, SETTING,
     PAYER_NAME, PAYER_CANONICAL, PAYER_LINE_OF_BUSINESS, PLAN_NAME,
     NEGOTIATED_RATE, NEGOTIATED_TYPE, RATE_TYPE
-FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES
+FROM YOUR_DB.MARKETPLACE.NEGOTIATED_RATES
 WHERE STATE_CODE = 'NY'
   AND CMS_CCN = '330024'
   AND PAYER_CANONICAL = 'AETNA'
@@ -979,7 +979,7 @@ ORDER BY CODE_TYPE, CODE, PLAN_NAME;
 <pre><code class="language-sql">SELECT
     r.CODE_TYPE, r.CODE, r.DESCRIPTION, r.SETTING, r.HOSPITAL_NAME,
     r.PAYER_NAME, r.PLAN_NAME, r.NEGOTIATED_RATE, r.NEGOTIATED_TYPE, r.RATE_TYPE
-FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES r
+FROM YOUR_DB.MARKETPLACE.NEGOTIATED_RATES r
 WHERE r.STATE_CODE = 'NY'
   AND r.CMS_CCN IN ('330024','330204','330055','330304')
   AND r.PAYER_CANONICAL = 'AETNA'
@@ -997,7 +997,7 @@ ORDER BY r.CODE, LOWER(r.SETTING), r.NEGOTIATED_RATE DESC;
 <pre><code class="language-sql">WITH aetna_dollars AS (
     SELECT CMS_CCN, HOSPITAL_NAME, CODE_TYPE, CODE, DESCRIPTION, SETTING,
            LOWER(SETTING) AS SETTING_KEY, NEGOTIATED_RATE
-    FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES
+    FROM YOUR_DB.MARKETPLACE.NEGOTIATED_RATES
     WHERE STATE_CODE = 'NY'
       AND RATE_TYPE = 'negotiated_dollar' AND NEGOTIATED_RATE &gt; 0
       AND PAYER_CANONICAL = 'AETNA' AND PAYER_LINE_OF_BUSINESS = 'commercial'
@@ -1031,7 +1031,7 @@ ORDER BY a.CODE, LOWER(a.SETTING);
     COUNT(*) AS row_count, COUNT(DISTINCT CODE) AS distinct_codes,
     COUNT(DISTINCT PAYER_CANONICAL) AS distinct_canonical_payers,
     COUNT(DISTINCT PAYER_NAME) AS distinct_payer_strings
-FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES
+FROM YOUR_DB.MARKETPLACE.NEGOTIATED_RATES
 WHERE STATE_CODE = 'NY'
   AND CMS_CCN IN ('330024','330204','330055','330304')
 GROUP BY HOSPITAL_NAME, LOWER(SETTING), NEGOTIATED_TYPE, RATE_TYPE
@@ -1044,8 +1044,8 @@ ORDER BY HOSPITAL_NAME, setting, row_count DESC;
     s.DISCOUNTED_CASH, n.NEGOTIATED_RATE,
     (n.NEGOTIATED_RATE - s.DISCOUNTED_CASH) AS negotiated_minus_cash,
     ROUND((n.NEGOTIATED_RATE - s.DISCOUNTED_CASH)/NULLIF(s.DISCOUNTED_CASH,0)*100,1) AS pct_over_cash
-FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES n
-JOIN MELANGE.MARKETPLACE.STANDARD_CHARGES s
+FROM YOUR_DB.MARKETPLACE.NEGOTIATED_RATES n
+JOIN YOUR_DB.MARKETPLACE.STANDARD_CHARGES s
        ON  s.CMS_CCN        = n.CMS_CCN
        AND s.CODE           = n.CODE
        AND s.CODE_TYPE      = n.CODE_TYPE
@@ -1064,7 +1064,7 @@ ORDER BY pct_over_cash DESC;
     CMS_CCN, HOSPITAL_NAME, CMS_TYPE, VIOLATION_CODE, SEVERITY, FIELD_PATH,
     DESCRIPTION, CMS_REGULATION_SECTION, RESOLUTION_STATUS,
     COMPLIANCE_SCORE, IS_COMPLIANT, CHECKED_AT
-FROM MELANGE.MARKETPLACE.COMPLIANCE_VIOLATIONS
+FROM YOUR_DB.MARKETPLACE.COMPLIANCE_VIOLATIONS
 WHERE STATE_CODE = 'NY'
   AND CMS_CCN IN ('330024','330204','330055','330304')
 ORDER BY
@@ -1072,13 +1072,13 @@ ORDER BY
     COMPLIANCE_SCORE ASC, CMS_CCN;
 </code></pre>
 <h3 id="8-data-freshness">8. Data freshness<a class="headerlink" href="#8-data-freshness" title="Permanent link">#</a></h3>
-<p>How recently we loaded each hospital's file. <code>LATEST_INGEST_DATE</code> is Melange's load date, not the hospital's self-reported republish date:</p>
+<p>How recently we loaded each hospital's file. <code>LATEST_INGEST_DATE</code> is our load date, not the hospital's self-reported republish date:</p>
 <pre><code class="language-sql">SELECT
     CMS_CCN, HOSPITAL_NAME, SYSTEM_NAME, SYSTEM_ROLE, CITY, STATE_CODE,
     CMS_TYPE, CMS_OWNERSHIP, CMS_RATING, LATEST_INGEST_DATE,
     DATEDIFF('day', LATEST_INGEST_DATE, CURRENT_DATE) AS days_since_ingest,
     AVG_COMPLIANCE_SCORE, IS_FULLY_COMPLIANT
-FROM MELANGE.MARKETPLACE.HOSPITAL_DIRECTORY
+FROM YOUR_DB.MARKETPLACE.HOSPITAL_DIRECTORY
 WHERE STATE_CODE = 'NY'
   AND CMS_CCN IN ('330024','330204','330055','330304')
 ORDER BY LATEST_INGEST_DATE DESC;
