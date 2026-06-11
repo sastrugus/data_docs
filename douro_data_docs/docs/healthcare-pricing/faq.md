@@ -1,12 +1,14 @@
 # FAQ & Query Conventions
 
+The SQL snippets below use `YOUR_DB` as the database name. Replace YOUR_DB with the database name you chose when mounting the share.
+
 ## How do I count hospitals?
 
 With `COUNT(DISTINCT CMS_CCN)`, never with row counts. Some facilities share one published source file but are distinct CMS-registered hospitals, so counting rows or file sources will miscount. The CCN is the unit of "a hospital" everywhere in this product family.
 
 ```sql
 SELECT COUNT(DISTINCT CMS_CCN) AS hospitals
-FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES
+FROM YOUR_DB.MARKETPLACE.NEGOTIATED_RATES
 WHERE STATE_CODE = 'NY';
 ```
 
@@ -15,8 +17,8 @@ WHERE STATE_CODE = 'NY';
 On `CMS_CCN` + `CODE` + `CODE_TYPE` + setting. Compare `SETTING` through `LOWER()` as a casing guard:
 
 ```sql
-FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES n
-JOIN MELANGE.MARKETPLACE.STANDARD_CHARGES s
+FROM YOUR_DB.MARKETPLACE.NEGOTIATED_RATES n
+JOIN YOUR_DB.MARKETPLACE.STANDARD_CHARGES s
        ON  s.CMS_CCN        = n.CMS_CCN
        AND s.CODE           = n.CODE
        AND s.CODE_TYPE      = n.CODE_TYPE
@@ -33,12 +35,12 @@ Averaging across methodologies is wrong because the values measure different thi
 
 ## How do I read freshness?
 
-`LATEST_INGEST_DATE` is the date Melange last loaded the hospital's file — not the hospital's own republish date. It is populated on every directory row, so recency is checkable per-row:
+`LATEST_INGEST_DATE` is the date we last loaded the hospital's file — not the hospital's own republish date. It is populated on every directory row, so recency is checkable per-row:
 
 ```sql
 SELECT CMS_CCN, HOSPITAL_NAME, LATEST_INGEST_DATE,
        DATEDIFF('day', LATEST_INGEST_DATE, CURRENT_DATE) AS days_since_ingest
-FROM MELANGE.MARKETPLACE.HOSPITAL_DIRECTORY
+FROM YOUR_DB.MARKETPLACE.HOSPITAL_DIRECTORY
 ORDER BY LATEST_INGEST_DATE DESC;
 ```
 

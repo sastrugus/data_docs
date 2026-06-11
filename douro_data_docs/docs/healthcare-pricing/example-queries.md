@@ -1,6 +1,6 @@
 # Example Queries
 
-Eight worked examples against the paid trial, smoke-tested live on 2026-06-11 (8/8 pass). They use a four-hospital demo peer set — Mount Sinai (330024), Bellevue (330204), NewYork-Presbyterian/Queens (330055), White Plains (330304) — with Bellevue as the cash-comparison anchor. Replace `MELANGE.MARKETPLACE.` with your mounted database name.
+Eight worked examples against the paid trial, smoke-tested live on 2026-06-11 (8/8 pass). They use a four-hospital demo peer set — Mount Sinai (330024), Bellevue (330204), NewYork-Presbyterian/Queens (330055), White Plains (330304) — with Bellevue as the cash-comparison anchor. The SQL below uses `YOUR_DB` as the database name. Replace YOUR_DB with the database name you chose when mounting the share.
 
 Two conventions you'll see throughout: `SETTING` is compared through `LOWER()` as a casing guard, and the strict-benchmarking filter `AND AUDIT_FLAG IS NULL` appears commented where it applies — uncomment it for per-code work, or use `AUDIT_FLAG IS DISTINCT FROM 'CONSTANT_VALUE_FILL'` to exclude fills only. See [Data Quality Methodology](data-quality.md) for when to use which.
 
@@ -14,8 +14,8 @@ SELECT
     n.PAYER_NAME, n.PAYER_CANONICAL, n.PAYER_LINE_OF_BUSINESS, n.PLAN_NAME,
     n.NEGOTIATED_RATE, n.NEGOTIATED_TYPE, n.RATE_TYPE,
     s.GROSS_CHARGE, s.DISCOUNTED_CASH
-FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES n
-LEFT JOIN MELANGE.MARKETPLACE.STANDARD_CHARGES s
+FROM YOUR_DB.MARKETPLACE.NEGOTIATED_RATES n
+LEFT JOIN YOUR_DB.MARKETPLACE.STANDARD_CHARGES s
        ON  s.CMS_CCN        = n.CMS_CCN
        AND s.CODE           = n.CODE
        AND s.CODE_TYPE      = n.CODE_TYPE
@@ -34,7 +34,7 @@ SELECT
     HOSPITAL_NAME, CODE_TYPE, CODE, DESCRIPTION, SETTING,
     PAYER_NAME, PAYER_CANONICAL, PAYER_LINE_OF_BUSINESS, PLAN_NAME,
     NEGOTIATED_RATE, NEGOTIATED_TYPE, RATE_TYPE
-FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES
+FROM YOUR_DB.MARKETPLACE.NEGOTIATED_RATES
 WHERE STATE_CODE = 'NY'
   AND CMS_CCN = '330024'
   AND PAYER_CANONICAL = 'AETNA'
@@ -52,7 +52,7 @@ The flagship: what one payer pays each hospital in the peer set for the same cod
 SELECT
     r.CODE_TYPE, r.CODE, r.DESCRIPTION, r.SETTING, r.HOSPITAL_NAME,
     r.PAYER_NAME, r.PLAN_NAME, r.NEGOTIATED_RATE, r.NEGOTIATED_TYPE, r.RATE_TYPE
-FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES r
+FROM YOUR_DB.MARKETPLACE.NEGOTIATED_RATES r
 WHERE r.STATE_CODE = 'NY'
   AND r.CMS_CCN IN ('330024','330204','330055','330304')
   AND r.PAYER_CANONICAL = 'AETNA'
@@ -74,7 +74,7 @@ The other flagship: where one hospital's rate sits against the market's 10th / 5
 WITH aetna_dollars AS (
     SELECT CMS_CCN, HOSPITAL_NAME, CODE_TYPE, CODE, DESCRIPTION, SETTING,
            LOWER(SETTING) AS SETTING_KEY, NEGOTIATED_RATE
-    FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES
+    FROM YOUR_DB.MARKETPLACE.NEGOTIATED_RATES
     WHERE STATE_CODE = 'NY'
       AND RATE_TYPE = 'negotiated_dollar' AND NEGOTIATED_RATE > 0
       AND PAYER_CANONICAL = 'AETNA' AND PAYER_LINE_OF_BUSINESS = 'commercial'
@@ -112,7 +112,7 @@ SELECT
     COUNT(*) AS row_count, COUNT(DISTINCT CODE) AS distinct_codes,
     COUNT(DISTINCT PAYER_CANONICAL) AS distinct_canonical_payers,
     COUNT(DISTINCT PAYER_NAME) AS distinct_payer_strings
-FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES
+FROM YOUR_DB.MARKETPLACE.NEGOTIATED_RATES
 WHERE STATE_CODE = 'NY'
   AND CMS_CCN IN ('330024','330204','330055','330304')
 GROUP BY HOSPITAL_NAME, LOWER(SETTING), NEGOTIATED_TYPE, RATE_TYPE
@@ -129,8 +129,8 @@ SELECT
     s.DISCOUNTED_CASH, n.NEGOTIATED_RATE,
     (n.NEGOTIATED_RATE - s.DISCOUNTED_CASH) AS negotiated_minus_cash,
     ROUND((n.NEGOTIATED_RATE - s.DISCOUNTED_CASH)/NULLIF(s.DISCOUNTED_CASH,0)*100,1) AS pct_over_cash
-FROM MELANGE.MARKETPLACE.NEGOTIATED_RATES n
-JOIN MELANGE.MARKETPLACE.STANDARD_CHARGES s
+FROM YOUR_DB.MARKETPLACE.NEGOTIATED_RATES n
+JOIN YOUR_DB.MARKETPLACE.STANDARD_CHARGES s
        ON  s.CMS_CCN        = n.CMS_CCN
        AND s.CODE           = n.CODE
        AND s.CODE_TYPE      = n.CODE_TYPE
@@ -153,7 +153,7 @@ SELECT
     CMS_CCN, HOSPITAL_NAME, CMS_TYPE, VIOLATION_CODE, SEVERITY, FIELD_PATH,
     DESCRIPTION, CMS_REGULATION_SECTION, RESOLUTION_STATUS,
     COMPLIANCE_SCORE, IS_COMPLIANT, CHECKED_AT
-FROM MELANGE.MARKETPLACE.COMPLIANCE_VIOLATIONS
+FROM YOUR_DB.MARKETPLACE.COMPLIANCE_VIOLATIONS
 WHERE STATE_CODE = 'NY'
   AND CMS_CCN IN ('330024','330204','330055','330304')
 ORDER BY
@@ -163,7 +163,7 @@ ORDER BY
 
 ## 8. Data freshness
 
-How recently we loaded each hospital's file. `LATEST_INGEST_DATE` is Melange's load date, not the hospital's self-reported republish date:
+How recently we loaded each hospital's file. `LATEST_INGEST_DATE` is our load date, not the hospital's self-reported republish date:
 
 ```sql
 SELECT
@@ -171,7 +171,7 @@ SELECT
     CMS_TYPE, CMS_OWNERSHIP, CMS_RATING, LATEST_INGEST_DATE,
     DATEDIFF('day', LATEST_INGEST_DATE, CURRENT_DATE) AS days_since_ingest,
     AVG_COMPLIANCE_SCORE, IS_FULLY_COMPLIANT
-FROM MELANGE.MARKETPLACE.HOSPITAL_DIRECTORY
+FROM YOUR_DB.MARKETPLACE.HOSPITAL_DIRECTORY
 WHERE STATE_CODE = 'NY'
   AND CMS_CCN IN ('330024','330204','330055','330304')
 ORDER BY LATEST_INGEST_DATE DESC;

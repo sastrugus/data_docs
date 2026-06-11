@@ -1,6 +1,6 @@
 # Data Quality Methodology
 
-This page is where Melange differs most from the rest of the market, so it gets real depth.
+This page is where Douro Data differs most from the rest of the market, so it gets real depth.
 
 ## The pipeline
 

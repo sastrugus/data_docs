@@ -14,6 +14,6 @@ We'd rather you read these here than discover them. Each one is a deliberate des
 
 6. **The compliance signal exists only where checks have run.** An absence of recorded violations is not a certification of compliance — `HAS_COMPLIANCE_CHECK = FALSE` is the explicit "not yet examined" flag.
 
-7. **`LATEST_INGEST_DATE` is Melange's load date**, not the hospital's own republish date. It tells you when we last pulled the file.
+7. **`LATEST_INGEST_DATE` is our load date**, not the hospital's own republish date. It tells you when we last pulled the file.
 
 8. **Refresh is periodic during the trial.** We refresh as hospitals republish; every row's recency is checkable via `LATEST_INGEST_DATE` rather than promised by an SLA.

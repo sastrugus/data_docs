@@ -1,6 +1,6 @@
-# Healthcare Pricing by Melange
+# Healthcare Pricing by Douro Data
 
-Melange harvests, parses, and quality-gates **hospital-published** machine-readable price files (the CMS hospital price transparency rule, 45 CFR §180.50) and publishes them as clean, query-ready pricing data on the Snowflake Marketplace.
+Douro Data harvests, parses, and quality-gates **hospital-published** machine-readable price files (the CMS hospital price transparency rule, 45 CFR §180.50) and publishes them as clean, query-ready pricing data on the Snowflake Marketplace.
 
 ## What makes this data different
 
