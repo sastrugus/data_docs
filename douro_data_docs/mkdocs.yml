@@ -13,6 +13,14 @@ nav:
     - Cal: products/cal.md
     - Time: products/time_dimension.md
     - Country: products/country_dimension.md
+  - Healthcare Pricing:
+    - Overview: healthcare-pricing/index.md
+    - Hospital Directory (Free): healthcare-pricing/hospital-directory.md
+    - Negotiated Rates (Paid Trial): healthcare-pricing/negotiated-rates.md
+    - Example Queries: healthcare-pricing/example-queries.md
+    - Data Quality Methodology: healthcare-pricing/data-quality.md
+    - Known Limitations: healthcare-pricing/known-limitations.md
+    - FAQ & Query Conventions: healthcare-pricing/faq.md
   - About: about.md
 theme:
   name: material
