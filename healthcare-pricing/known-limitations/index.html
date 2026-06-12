@@ -761,7 +761,7 @@
 <p><strong>Hospital counts differ by table</strong> — 132 negotiated rates / 136 standard charges / 154 directory (as of 2026-06-11). Hospitals publish unevenly; the directory is the union of what we actually hold, not a registration list.</p>
 </li>
 <li>
-<p><strong>Source files contain real junk.</strong> Some hospitals publish constant-fill placeholders — $0.01 floods, repeated magic numbers. We never delete them: we flag them (<code>AUDIT_FLAG</code>) with row-level evidence behind every flag, and you choose the filter. See <a href="../data-quality/">Data Quality Methodology</a>.</p>
+<p><strong>Source files contain real defects.</strong> Some hospitals publish constant-value fills — $0.01 floods, repeated magic numbers — and those rows carry the verdict-grade <code>CONSTANT_VALUE_FILL</code> flag with row-level evidence. We never delete them; you choose the filter. (Plateau-flagged rows are different: a neutral structural observation on real rates, not a defect.) See <a href="../data-quality/">Data Quality Methodology</a>.</p>
 </li>
 <li>
 <p><strong>Payer canonicalization is partial and growing.</strong> About two-thirds of negotiated-dollar rows are mapped to a canonical parent payer; the remainder retain their hospital-reported <code>PAYER_NAME</code>, present on every row, so the unmapped tail is always matchable. Nothing is dropped. The canonical map grows with the catalog.</p>
@@ -776,7 +776,10 @@
 <p><strong><code>LATEST_INGEST_DATE</code> is our load date</strong>, not the hospital's own republish date. It tells you when we last pulled the file.</p>
 </li>
 <li>
-<p><strong>Refresh is periodic during the trial.</strong> We refresh as hospitals republish; every row's recency is checkable via <code>LATEST_INGEST_DATE</code> rather than promised by an SLA.</p>
+<p><strong>Notable absences (as of 2026-06-12).</strong> A small tail of hospitals whose websites block automated retrieval is not yet in the dataset — including NewYork-Presbyterian's Manhattan campuses and the Hospital for Special Surgery. We disclose gaps rather than paper over them; these hospitals join as retrieval succeeds.</p>
+</li>
+<li>
+<p><strong>Refresh is periodic during the trial.</strong> We refresh as hospitals republish; recency is checkable per row (<code>INGEST_DATE</code> on rate rows, <code>LATEST_INGEST_DATE</code> on the directory) rather than promised by an SLA.</p>
 </li>
 </ol>
 

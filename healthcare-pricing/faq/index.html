@@ -917,7 +917,7 @@ JOIN YOUR_DB.MARKETPLACE.STANDARD_CHARGES s
 <p><code>NEGOTIATED_TYPE</code> is the contract methodology as the hospital published it — case rate, per diem, fee schedule, and so on. A NULL means the source published no methodology cell; we never attribute a methodology the hospital didn't publish.</p>
 <p>Averaging across methodologies is wrong because the values measure different things: a per diem is a price per day, a case rate is a price per episode, a fee-schedule line is a price per service. Averaging them produces a number with no unit. Group by <code>NEGOTIATED_TYPE</code> (and <code>SETTING</code>) first — see <a href="../example-queries/#5-methodology-breakdown">Example Query 5</a> — and benchmark within a methodology, not across them.</p>
 <h3 id="how-do-i-read-freshness">How do I read freshness?<a class="headerlink" href="#how-do-i-read-freshness" title="Permanent link">#</a></h3>
-<p><code>LATEST_INGEST_DATE</code> is the date we last loaded the hospital's file — not the hospital's own republish date. It is populated on every directory row, so recency is checkable per-row:</p>
+<p><code>LATEST_INGEST_DATE</code> is the date we last loaded the hospital's file — not the hospital's own republish date. It is populated on every directory row, and rate rows carry their own <code>INGEST_DATE</code>, so recency is checkable per-row:</p>
 <pre><code class="language-sql">SELECT CMS_CCN, HOSPITAL_NAME, LATEST_INGEST_DATE,
        DATEDIFF('day', LATEST_INGEST_DATE, CURRENT_DATE) AS days_since_ingest
 FROM YOUR_DB.MARKETPLACE.HOSPITAL_DIRECTORY
