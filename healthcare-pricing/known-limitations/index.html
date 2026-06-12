@@ -758,7 +758,7 @@
 <p><strong>Scope: New York only, by design.</strong> This is a depth-first trial; additional states follow demand.</p>
 </li>
 <li>
-<p><strong>Hospital counts differ by table</strong> — 132 negotiated rates / 136 standard charges / 154 directory (as of 2026-06-11). Hospitals publish unevenly; the directory is the union of what we actually hold, not a registration list.</p>
+<p><strong>Hospital counts differ by table.</strong> Hospitals publish unevenly; the directory is the union of what we actually hold, not a registration list. Count with <code>COUNT(DISTINCT CMS_CCN)</code>, per table — the Marketplace listing carries the precise, date-stamped figures.</p>
 </li>
 <li>
 <p><strong>Source files contain real defects.</strong> Some hospitals publish constant-value fills — $0.01 floods, repeated magic numbers — and those rows carry the verdict-grade <code>CONSTANT_VALUE_FILL</code> flag with row-level evidence. We never delete them; you choose the filter. (Plateau-flagged rows are different: a neutral structural observation on real rates, not a defect.) See <a href="../data-quality/">Data Quality Methodology</a>.</p>
@@ -776,7 +776,7 @@
 <p><strong><code>LATEST_INGEST_DATE</code> is our load date</strong>, not the hospital's own republish date. It tells you when we last pulled the file.</p>
 </li>
 <li>
-<p><strong>Notable absences (as of 2026-06-12).</strong> A small tail of hospitals whose websites block automated retrieval is not yet in the dataset — including NewYork-Presbyterian's Manhattan campuses and the Hospital for Special Surgery. We disclose gaps rather than paper over them; these hospitals join as retrieval succeeds.</p>
+<p><strong>Notable absences (as of 2026-06-12).</strong> NewYork-Presbyterian (all Manhattan-side campuses, via its blanket file), Mount Sinai Morningside, NY Eye &amp; Ear, and Montefiore Nyack joined on 2026-06-12. The Hospital for Special Surgery remains absent — its file defeats our current download paths — along with a small upstate tail. We disclose gaps rather than paper over them; they join as retrieval succeeds.</p>
 </li>
 <li>
 <p><strong>Refresh is periodic during the trial.</strong> We refresh as hospitals republish; recency is checkable per row (<code>INGEST_DATE</code> on rate rows, <code>LATEST_INGEST_DATE</code> on the directory) rather than promised by an SLA.</p>

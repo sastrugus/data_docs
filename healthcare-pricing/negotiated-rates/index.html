@@ -896,7 +896,7 @@
   <h1>Negotiated Rates (Paid Trial)</h1>
 
 <h2 id="negotiated-rates-new-york-paid-trial">Negotiated Rates — New York (Paid Trial)<a class="headerlink" href="#negotiated-rates-new-york-paid-trial" title="Permanent link">#</a></h2>
-<p>The benchmark dataset: <strong>44.8M</strong> (44,804,692, as of 2026-06-11) hospital-published negotiated dollar rates across <strong>132</strong> New York hospitals, keyed to each hospital's CMS CCN, methodology- and setting-aware.</p>
+<p>The benchmark dataset: tens of millions of hospital-published negotiated dollar rates spanning 150+ New York hospitals across both rate surfaces, keyed to each hospital's CMS CCN, methodology- and setting-aware. For live counts, run <code>COUNT(DISTINCT CMS_CCN)</code> on the table itself; the Marketplace listing carries the precise, date-stamped figures for each release.</p>
 <p>This dataset benchmarks payer-specific negotiated dollar rates; percent-of-charges contracts surface as a compliance disclosure signal, not a benchmarkable rate — negotiated dollar amounts are unaffected.</p>
 <h3 id="negotiated_rates">NEGOTIATED_RATES<a class="headerlink" href="#negotiated_rates" title="Permanent link">#</a></h3>
 <p>Each row in <code>MARKETPLACE.NEGOTIATED_RATES</code> carries:</p>
@@ -953,7 +953,7 @@
 <p>Every row carries an additive <code>AUDIT_FLAG</code> column: we never alter or remove a published value, but where a hospital's file shows a detectable constant-value pattern, we say so on the row. It has exactly two values — <code>CONSTANT_VALUE_FILL</code> (an evidence-backed verdict that the value is a source-side fill) and <code>CONSTANT_RATE_PLATEAU</code> (a neutral structural observation, consistent with real blanket, case-rate, or tiered-export arrangements) — or NULL, meaning no pattern was detected. You choose the filter; we don't choose for you.</p>
 <p>The full definitions and both filter recipes are on the <a href="../data-quality/">Data Quality Methodology</a> page.</p>
 <h3 id="standard_charges">STANDARD_CHARGES<a class="headerlink" href="#standard_charges" title="Permanent link">#</a></h3>
-<p><code>MARKETPLACE.STANDARD_CHARGES</code> — <strong>3.9M</strong> rows across <strong>136</strong> hospitals (as of 2026-06-11) — carries the four CMS-required standard charges per service item: gross, discounted cash, and the de-identified minimum and maximum. Joined to negotiated rates, it answers questions like "where does the negotiated rate sit relative to the cash price?"</p>
+<p><code>MARKETPLACE.STANDARD_CHARGES</code> carries the four CMS-required standard charges per service item: gross, discounted cash, and the de-identified minimum and maximum. Joined to negotiated rates, it answers questions like "where does the negotiated rate sit relative to the cash price?"</p>
 <h3 id="compliance_violations">COMPLIANCE_VIOLATIONS<a class="headerlink" href="#compliance_violations" title="Permanent link">#</a></h3>
 <p><code>MARKETPLACE.COMPLIANCE_VIOLATIONS</code> carries row-level findings from our CMS-transparency checker where it has run: violation code, severity, the field path in the hospital's file, the CMS regulation section, and resolution status.</p>
 <p>Read it carefully: an absent hospital means "not yet examined," never "clean." <code>STANDARD_CHARGES.HAS_COMPLIANCE_CHECK = FALSE</code> is the explicit "not yet examined" flag, and the absence of recorded violations is not a certification of compliance.</p>

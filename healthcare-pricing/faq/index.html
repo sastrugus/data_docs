@@ -898,7 +898,7 @@
 <h2 id="faq-query-conventions">FAQ &amp; Query Conventions<a class="headerlink" href="#faq-query-conventions" title="Permanent link">#</a></h2>
 <p>The SQL snippets below use <code>YOUR_DB</code> as the database name. Replace YOUR_DB with the database name you chose when mounting the share.</p>
 <h3 id="how-do-i-count-hospitals">How do I count hospitals?<a class="headerlink" href="#how-do-i-count-hospitals" title="Permanent link">#</a></h3>
-<p>With <code>COUNT(DISTINCT CMS_CCN)</code>, never with row counts. Some facilities share one published source file but are distinct CMS-registered hospitals, so counting rows or file sources will miscount. The CCN is the unit of "a hospital" everywhere in this product family.</p>
+<p>With <code>COUNT(DISTINCT CMS_CCN)</code>, never with row counts. Some facilities share one published source file but are distinct CMS-registered hospitals, so counting rows or file sources will miscount. The CCN is the unit of "a hospital" everywhere in this product family. The data itself is the source of truth for counts; the Marketplace listing carries the precise, date-stamped figures for each release.</p>
 <pre><code class="language-sql">SELECT COUNT(DISTINCT CMS_CCN) AS hospitals
 FROM YOUR_DB.MARKETPLACE.NEGOTIATED_RATES
 WHERE STATE_CODE = 'NY';
