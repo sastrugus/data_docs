@@ -35,7 +35,7 @@ Averaging across methodologies is wrong because the values measure different thi
 
 ## How do I read freshness?
 
-`LATEST_INGEST_DATE` is the date we last loaded the hospital's file — not the hospital's own republish date. It is populated on every directory row, so recency is checkable per-row:
+`LATEST_INGEST_DATE` is the date we last loaded the hospital's file — not the hospital's own republish date. It is populated on every directory row, and rate rows carry their own `INGEST_DATE`, so recency is checkable per-row:
 
 ```sql
 SELECT CMS_CCN, HOSPITAL_NAME, LATEST_INGEST_DATE,
