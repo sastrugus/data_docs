@@ -15,10 +15,10 @@ One product family, three tiers:
 | Tier | Status | What you get |
 |---|---|---|
 | [Hospital Directory — New York](hospital-directory.md) | Live, free | One row per NY hospital whose price file we hold parsed data for: identity, CMS profile, freshness, compliance signal. |
-| [Negotiated Rates — New York](negotiated-rates.md) | Live, paid trial | 44.8M hospital-published negotiated dollar rates across 132 hospitals, plus standard charges and compliance findings. |
+| [Negotiated Rates — New York](negotiated-rates.md) | Live, paid trial | Tens of millions of hospital-published negotiated dollar rates, plus standard charges and compliance findings. |
 | Multi-state expansion | Planned | Additional states follow demand during the trial. |
 
-Key figures, verified live as of 2026-06-11: the directory covers **154** New York hospitals — **132** with negotiated rates ∪ **136** with standard charges (114 publish both, 18 rates-only, 22 charges-only, zero registration-only rows).
+The catalog spans **150+ New York hospitals** across both rate surfaces, and every directory row holds parsed rate data — negotiated rates, standard charges, or both — with zero registration-only rows. The data itself is the source of truth for counts: `COUNT(DISTINCT CMS_CCN)` on any table gives you the current number, and the Marketplace listing carries the precise, date-stamped figures for each release.
 
 ## Where to start
 

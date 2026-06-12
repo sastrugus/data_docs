@@ -1,8 +1,8 @@
 # Hospital Directory — New York (Free)
 
-The free directory is a **coverage list, not a registration list**. Every row is here because we fetched, parsed, and quality-gated that hospital's actual machine-readable price file. As of 2026-06-11: **154** New York hospitals = **132** with negotiated rates ∪ **136** with standard charges (114 publish both, 18 rates-only, 22 charges-only, and zero rows are registration-only).
+The free directory is a **coverage list, not a registration list**. Every row is here because we fetched, parsed, and quality-gated that hospital's actual machine-readable price file — every row holds negotiated rates, standard charges, or both, and zero rows are registration-only. It covers 150+ New York hospitals; counts differ by table because hospitals publish unevenly, and the directory is the union of what we actually hold.
 
-It is the peer-scoping layer and the free companion to our paid dataset of 44.8 million hospital-published negotiated dollar rates: use the directory to build the peer set you'll benchmark against.
+It is the peer-scoping layer and the free companion to our paid dataset of tens of millions of hospital-published negotiated dollar rates: use the directory to build the peer set you'll benchmark against. The Marketplace listing carries the precise, date-stamped figures for each release.
 
 ## Column reference
 
@@ -50,4 +50,4 @@ FROM HOSPITAL_DIRECTORY_NEW_YORK_FREE.MARKETPLACE.HOSPITAL_DIRECTORY
 ORDER BY LATEST_INGEST_DATE DESC, HOSPITAL_NAME;
 ```
 
-All three verified live on 2026-06-11 (154 rows; CMS_TYPE mix: 111 acute care / 25 psychiatric / 17 critical access / 1 children's).
+All three are verified live against the share — the first gives you the current hospital count straight from the data.

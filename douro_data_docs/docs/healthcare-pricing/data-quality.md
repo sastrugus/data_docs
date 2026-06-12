@@ -19,9 +19,9 @@ We never alter or delete a published value. If a hospital's file contains a $0.0
 
 `AUDIT_FLAG` is a nullable column on `NEGOTIATED_RATES` with exactly two values. The two grades are different kinds of statements, and the difference is the point:
 
-**`CONSTANT_VALUE_FILL` — an evidence-backed verdict.** The value is a source-side fill, not a real per-service price: the hospital's file repeats a constant where distinct per-service prices should be. About 2.3% of New York rows carry this flag (as of 2026-06-11).
+**`CONSTANT_VALUE_FILL` — an evidence-backed verdict.** The value is a source-side fill, not a real per-service price: the hospital's file repeats a constant where distinct per-service prices should be. A small single-digit share of New York rows carries this flag; the Marketplace listing carries the current, date-stamped figure.
 
-**`CONSTANT_RATE_PLATEAU` — a neutral structural observation.** One constant value appears across many codes of a payer column. That structure is consistent with real contract arrangements — blanket rates, case rates, tiered exports — so these rows are real data: annotated, never excluded. About 13% of rows carry this flag (as of 2026-06-11). It is a structural fact you should know before per-code benchmarking, not a defect.
+**`CONSTANT_RATE_PLATEAU` — a neutral structural observation.** One constant value appears across many codes of a payer column. That structure is consistent with real contract arrangements — blanket rates, case rates, tiered exports — so these rows are real data: annotated, never excluded. A larger share of rows carries this flag (the current figure is in the Marketplace listing). It is a structural fact you should know before per-code benchmarking, not a defect.
 
 **NULL — no pattern detected.** This is not a certification. It means our detector found no constant-value pattern on that row, nothing more.
 

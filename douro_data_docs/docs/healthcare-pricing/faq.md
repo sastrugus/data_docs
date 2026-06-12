@@ -4,7 +4,7 @@ The SQL snippets below use `YOUR_DB` as the database name. Replace YOUR_DB with 
 
 ## How do I count hospitals?
 
-With `COUNT(DISTINCT CMS_CCN)`, never with row counts. Some facilities share one published source file but are distinct CMS-registered hospitals, so counting rows or file sources will miscount. The CCN is the unit of "a hospital" everywhere in this product family.
+With `COUNT(DISTINCT CMS_CCN)`, never with row counts. Some facilities share one published source file but are distinct CMS-registered hospitals, so counting rows or file sources will miscount. The CCN is the unit of "a hospital" everywhere in this product family. The data itself is the source of truth for counts; the Marketplace listing carries the precise, date-stamped figures for each release.
 
 ```sql
 SELECT COUNT(DISTINCT CMS_CCN) AS hospitals

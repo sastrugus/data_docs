@@ -1,6 +1,6 @@
 # Negotiated Rates — New York (Paid Trial)
 
-The benchmark dataset: **44.8M** (44,804,692, as of 2026-06-11) hospital-published negotiated dollar rates across **132** New York hospitals, keyed to each hospital's CMS CCN, methodology- and setting-aware.
+The benchmark dataset: tens of millions of hospital-published negotiated dollar rates spanning 150+ New York hospitals across both rate surfaces, keyed to each hospital's CMS CCN, methodology- and setting-aware. For live counts, run `COUNT(DISTINCT CMS_CCN)` on the table itself; the Marketplace listing carries the precise, date-stamped figures for each release.
 
 This dataset benchmarks payer-specific negotiated dollar rates; percent-of-charges contracts surface as a compliance disclosure signal, not a benchmarkable rate — negotiated dollar amounts are unaffected.
 
@@ -34,7 +34,7 @@ The full definitions and both filter recipes are on the [Data Quality Methodolog
 
 ## STANDARD_CHARGES
 
-`MARKETPLACE.STANDARD_CHARGES` — **3.9M** rows across **136** hospitals (as of 2026-06-11) — carries the four CMS-required standard charges per service item: gross, discounted cash, and the de-identified minimum and maximum. Joined to negotiated rates, it answers questions like "where does the negotiated rate sit relative to the cash price?"
+`MARKETPLACE.STANDARD_CHARGES` carries the four CMS-required standard charges per service item: gross, discounted cash, and the de-identified minimum and maximum. Joined to negotiated rates, it answers questions like "where does the negotiated rate sit relative to the cash price?"
 
 ## COMPLIANCE_VIOLATIONS
 
